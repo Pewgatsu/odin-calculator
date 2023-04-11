@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calc-container {
+    height: auto;
+    width: auto;
+    padding: 20px;
+    
+}
+
+.buttons {
+    display: grid;
+    width: 300px;
+    height: inherit;
+    grid-template: repeat(6, 50px) / repeat(4, 1fr);
+    gap: 7px;
+}
+
+.buttons > #output{
+    width: auto;
+    height: auto;
+    grid-column: span 4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 10px;
+    color: white;
+    background-color: rgb(158, 181, 181);
+}
+
+.buttons > button {
+    border: none;
+    color: white;
+}
+
+.buttons > #zero {
+    grid-column: span 2;
+}
+
+.buttons > .operand, .decimal  {
+    background-color: darkslategray;
+}
+
+.buttons > .operator {
+    background-color: orange;
+}
+
+.buttons > .clear, .sign, .modulo {
+    background-color: rgb(30, 171, 179);
+}
+
+
+
+
+
+
