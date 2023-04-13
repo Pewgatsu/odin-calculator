@@ -17,10 +17,8 @@ buttons.forEach((button) => {
         if (button.classList.contains('operator')){
             console.log('add')
 
-            
-            
-
         }
+
         if (button.classList.contains('operand')){
             holder.push(button.value)
             result = holder.join('')
@@ -29,7 +27,6 @@ buttons.forEach((button) => {
     })
 
 })
-
 
 
 function add (x,y) {
