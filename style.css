@@ -36,11 +36,13 @@
     padding: 10px;
     color: white;
     background-color: rgb(158, 181, 181);
+    border-radius: 5px;
 }
 
 .buttons > button {
     border: none;
     color: white;
+    border-radius: 5px;
 }
 
 .buttons > #zero {
