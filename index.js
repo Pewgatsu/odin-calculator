@@ -23,13 +23,13 @@ buttons.forEach((button) => {
             if( num2 === null && operator === null ) {
                 num1 = holder.join('');
                 output.innerText = holder.join('');
-               // console.log('dito')
+               
             }else if ( num1 !== null && operator !== null) {
                 num2 = holder.join('');
-                //console.log('test dito')
+                
                 output.innerText = holder.join('');
             }else {
-                //console.log('testing')
+                
                 output.innerText = result;
             }
 
