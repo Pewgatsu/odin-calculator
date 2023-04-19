@@ -67,15 +67,17 @@ buttons.forEach((button) => {
 
         if (button.classList.contains('sign')) {
 
-            if ( num2 === null && operator === null) {
-                
+            if ( (num2 === null && operator === null) || (num2 === null && operator !== null)) {
+
                 num1 = -num1;
                 output.innerText = num1;
-            } else if (num1 !== null && operator !== null) {
 
+            } else if ( (num1 !== null && operator !== null) || (num2 !== null && operator !== null)) {
                 num2 = -num2;
                 output.innerText = num2;
-            }         
+            }else {
+                
+            }
         }
 
         if (button.classList.contains('equals')) {
@@ -96,6 +98,13 @@ buttons.forEach((button) => {
         if (button.classList.contains('clear')) {
             clear();
         }
+
+        if (button.classList.contains('delete')) {
+            holder.pop();
+            output.innerText = holder.join('');
+        }
+
+
 
 
     })
