@@ -1,5 +1,5 @@
-const buttons = document.querySelectorAll('button.operator, button.operand, button.equals')
-const clearButton = document.getElementById('clear');
+
+const buttons = document.querySelectorAll('button')
 const output = document.getElementById('output');
 
 
@@ -16,13 +16,19 @@ buttons.forEach((button) => {
 
     button.addEventListener('click', () => {
 
-        if (button.classList.contains('operand')){
+        if (button.classList.contains('operand') || button.classList.contains('decimal')){
 
-            holder.push(button.value);
-
+            if (holder.includes('.') && button.value === "."){
+                console.log('test');
+            }else {
+                holder.push(button.value);
+            }
+            
             if( num2 === null && operator === null ) {
                 num1 = holder.join('');
                 output.innerText = holder.join('');
+                
+                
                
             }else if ( num1 !== null && operator !== null) {
                 num2 = holder.join('');
@@ -33,8 +39,10 @@ buttons.forEach((button) => {
                 output.innerText = result;
             }
 
-            
         }
+
+       
+
         
         if (button.classList.contains('operator')){
 
@@ -75,18 +83,17 @@ buttons.forEach((button) => {
                 num2 = null;
                 operator = null;
             }
+        }
 
-        }        
+        if (button.classList.contains('clear')) {
+            clear();
+        }
 
-        
 
     })
 
 })
 
-clearButton.addEventListener('click', () => {
-    clear();
-})
 
 
 function clear () {
