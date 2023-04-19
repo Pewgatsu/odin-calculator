@@ -58,7 +58,7 @@
 }
 
 .buttons > #zero {
-    grid-column: span 2;
+    grid-column: span 1;
 }
 
 .buttons > .operand, .decimal  {
@@ -72,6 +72,16 @@
 .buttons > .clear, .sign, #modulo {
     background-color: rgb(30, 171, 179);
 }
+
+.buttons > .delete {
+    background-color: orangered;
+}
+
+#delete-icon {
+    color: white;
+    background: none
+}
+
 
 
 
