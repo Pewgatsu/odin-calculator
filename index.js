@@ -9,41 +9,36 @@ let num2 = null;
 let result = 0;
 let holder = [];
 let operator = null;
-
+let isNegative = false;
 
 
 buttons.forEach((button) => {
 
     button.addEventListener('click', () => {
 
-        if (button.classList.contains('operand') || button.classList.contains('decimal')){
+        if (button.classList.contains('operand') || button.classList.contains('decimal') ){
 
             if (holder.includes('.') && button.value === "."){
                 console.log('test');
             }else {
                 holder.push(button.value);
             }
+
             
             if( num2 === null && operator === null ) {
                 num1 = holder.join('');
-                output.innerText = holder.join('');
-                
-                
-               
+
+                output.innerText = num1;
+
             }else if ( num1 !== null && operator !== null) {
                 num2 = holder.join('');
-                
-                output.innerText = holder.join('');
+                output.innerText = num2;
             }else {
-                
                 output.innerText = result;
             }
 
         }
 
-       
-
-        
         if (button.classList.contains('operator')){
 
             /* If the first number is empty, 
@@ -51,29 +46,42 @@ buttons.forEach((button) => {
                Then empty the holder
             */
 
-            if (operator === null ){
+            
+            if (num1 === null) {
+                // do nothing
+            }else if (operator === null){
                 holder = [];
                 operator = button.value;
-            }else {
+            }else {   
+                
                 result = evaluate(num1, num2, operator);
-                output.innerText = result;
 
+                output.innerText = result;
                 num1 = result;
                 num2 = null;
                 holder = [];
                 operator = button.value;
-
             }
-            
-            
+        }
+
+
+        if (button.classList.contains('sign')) {
+
+            if ( num2 === null && operator === null) {
+                
+                num1 = -num1;
+                output.innerText = num1;
+            } else if (num1 !== null && operator !== null) {
+
+                num2 = -num2;
+                output.innerText = num2;
+            }         
         }
 
         if (button.classList.contains('equals')) {
-            console.log(num1);
-            console.log(num2);
 
             if(num2 === null ) {
-
+                // do nothing
             }else {
                 result = evaluate(num1,num2,operator);
             
@@ -103,6 +111,7 @@ function clear () {
     operator = null;
     result = 0;
     output.innerText = 0;
+    isNegative = false;
 }
 
 
