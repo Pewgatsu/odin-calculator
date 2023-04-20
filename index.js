@@ -12,6 +12,27 @@ let operator = null;
 let isNegative = false;
 
 
+document.addEventListener('keydown', (event) => {
+    const key = event.key;
+
+    console.log(event.key)
+    const button = Array.from(buttons).find( (btn) => btn.value === key);
+    
+   
+    if (button) {
+        button.click();
+    }else if (key === "Enter"){
+        const equalsButton = document.getElementById('equals');
+        equalsButton.click();
+    }else if (key === "Backspace") {   
+        const deleteButton = document.getElementById('delete');
+        deleteButton.click();
+    }else if (key === "Escape"){
+        const clearButton = document.getElementById('clear');
+        clearButton.click();
+    }
+});
+
 buttons.forEach((button) => {
 
     button.addEventListener('click', () => {
@@ -19,7 +40,7 @@ buttons.forEach((button) => {
         if (button.classList.contains('operand') || button.classList.contains('decimal') ){
 
             if (holder.includes('.') && button.value === "."){
-                console.log('test');
+                // do nothing
             }else {
                 holder.push(button.value);
             }
@@ -82,11 +103,14 @@ buttons.forEach((button) => {
 
         if (button.classList.contains('equals')) {
 
+           
+
             if(num2 === null ) {
                 // do nothing
             }else {
+                
                 result = evaluate(num1,num2,operator);
-            
+                console.log(num1 + operator + num2 + "="+ result);
                 output.innerText = result;
                 num1 = result; 
                 holder = [];
@@ -97,15 +121,20 @@ buttons.forEach((button) => {
 
         if (button.classList.contains('clear')) {
             clear();
+            output.innerText = 0;
         }
 
         if (button.classList.contains('delete')) {
-            holder.pop();
-            output.innerText = holder.join('');
+            
+            if (holder.length > 1) {
+                holder.pop();
+                output.innerText = holder.join('');
+            }else {
+                holder.pop();
+                output.innerText = 0;
+            }
+            
         }
-
-
-
 
     })
 
@@ -119,7 +148,6 @@ function clear () {
     holder = [];
     operator = null;
     result = 0;
-    output.innerText = 0;
     isNegative = false;
 }
 
